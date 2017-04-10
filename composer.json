@@ -15,5 +15,11 @@
         "psr-4": {
             "berkas1\\thingspeak_php\\": "src"
         }
+    },
+    "scripts": {
+        "test": "./vendor/bin/phpunit"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^6.1"
     }
 }

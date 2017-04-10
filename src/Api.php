@@ -329,13 +329,6 @@ class Api {
      * @return mixed
      */
     public function getResponse() {
-        if ($this->response_format == "json") {
-            header('Content-Type: application/json');
-        }
-
-        if ($this->response_format == "xml") {
-            header('Content-Type: application/xml');
-        }
         return $this->response;
     }
 
