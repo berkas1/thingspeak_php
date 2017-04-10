@@ -1,0 +1,24 @@
+language: php
+
+os:
+  - linux
+
+git:
+  depth: 1
+
+php:
+  - 7.0
+
+branches:
+  only: master
+
+install:
+  - composer install --no-interactions
+
+
+before_script:
+  - mkdir -p build/logs
+
+
+script:
+- ./vendor/bin/phpunit > build/log
