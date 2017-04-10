@@ -1,0 +1,19 @@
+{
+    "name": "berkas1/thingspeak_php",
+    "description": "PHP library for communication with thingspeak.com service.",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "berkas1",
+            "email": "berka@berkasimon.com"
+        }
+    ],
+    "require": {},
+
+    "autoload": {
+        "psr-4": {
+            "berkas1\\thingspeak_php\\": "src"
+        }
+    }
+}
