@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit
+        backupGlobals="true"
+        colors="true"
+        stopOnFailure="false">
+
+    <filter>
+        <whitelist>
+            <directory>./src</directory>
+            <exclude>
+                <directory>./public</directory>
+                <directory>./vendor</directory>
+                <directory>./tests</directory>
+            </exclude>
+        </whitelist>
+    </filter>
+
+    <testsuite name="Api Test Suite">
+        <directory suffix=".php">./tests</directory>
+    </testsuite>
+
+</phpunit>
