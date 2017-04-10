@@ -13,7 +13,7 @@ branches:
   only: master
 
 install:
-  - composer install --no-interactions
+  - composer install --no-interaction
 
 
 before_script:
