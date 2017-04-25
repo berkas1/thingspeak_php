@@ -8,7 +8,6 @@ namespace berkas1\thingspeak_php;
 
 class Api {
 
-    const THINGSPEAK_URL = "https://api.thingspeak.com/";
 
     protected $apikey;
     protected $channel_id;
@@ -16,11 +15,15 @@ class Api {
     protected $response_code;
     protected $response;
 
+    protected $server_url;
+
 
     public function __construct($channel_id = null, $apikey = null, $type = "json") {
         $this->channel_id = $channel_id;
         $this->apikey = $apikey;
         $this->response_format = $type;
+
+        $this->server_url = "https://api.thingspeak.com/";
 
         return $this;
 
@@ -233,7 +236,7 @@ class Api {
         $curl = curl_init();
         curl_setopt_array($curl, array(
           CURLOPT_RETURNTRANSFER => 1,
-          CURLOPT_URL => $this::THINGSPEAK_URL . $uri,
+          CURLOPT_URL => $this->server_url . $uri,
           CURLOPT_USERAGENT => '',
         ));
         $this->response = curl_exec($curl);
@@ -250,7 +253,7 @@ class Api {
     protected function makePostRequest($uri, $params) {
         $curl = curl_init();
 
-        curl_setopt($curl, CURLOPT_URL,$this::THINGSPEAK_URL . $uri);
+        curl_setopt($curl, CURLOPT_URL,$this->server_url . $uri);
         curl_setopt($curl, CURLOPT_POST, 1);
         curl_setopt($curl, CURLOPT_POSTFIELDS,
                   http_build_query($params));
@@ -271,7 +274,7 @@ class Api {
     protected function makePutRequest($uri, $params) {
         $curl = curl_init();
 
-        curl_setopt($curl, CURLOPT_URL,$this::THINGSPEAK_URL . $uri);
+        curl_setopt($curl, CURLOPT_URL,$this->server_url . $uri);
         curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "PUT");
         curl_setopt($curl, CURLOPT_POSTFIELDS,
           http_build_query($params));
@@ -346,6 +349,22 @@ class Api {
     public function getResponseCode() {
         return $this->response_code;
     }
+
+    /**
+     * @return string
+     */
+    public function getServerUrl(): string {
+        return $this->server_url;
+    }
+
+    /**
+     * @param string $server_url
+     */
+    public function setServerUrl(string $server_url) {
+        $this->server_url = $server_url;
+    }
+
+
 
 
 
