@@ -1,6 +1,8 @@
 thingspeak_php is a library which provides a simple way to communicate with [thingspeak.com](https://thingspeak.com) service
 
 Requires only *php-curl*
+
+[![Build Status](https://travis-ci.org/berkas1/thingspeak_php.svg?branch=master)](https://travis-ci.org/berkas1/thingspeak_php)
  
 ### Installation
 ```composer require berkas1/thingspeak_php```
