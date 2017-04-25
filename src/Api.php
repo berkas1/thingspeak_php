@@ -6,6 +6,8 @@
 namespace berkas1\thingspeak_php;
 
 
+use PHPUnit\Runner\Exception;
+
 class Api {
 
 
@@ -287,56 +289,62 @@ class Api {
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getApikey() {
         return $this->apikey;
     }
 
     /**
-     * @param mixed $apikey
+     * @param string $apikey
      */
     public function setApikey($apikey) {
         $this->apikey = $apikey;
     }
 
     /**
-     * @return mixed
+     * @return integer
      */
     public function getChannelId() {
         return $this->channel_id;
     }
 
     /**
-     * @param mixed $channel_id
+     * @param integer $channel_id
      */
     public function setChannelId($channel_id) {
         $this->channel_id = $channel_id;
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getResponseFormat() {
         return $this->response_format;
     }
 
     /**
-     * @param mixed $response_format
+     * Set response format. 'xml' and 'json' supported.
+     * @param string $response_format
+     * @throws \Exception
      */
     public function setResponseFormat($response_format) {
+        if ($response_format != "json" && $response_format != 'xml')
+        {
+            throw new \Exception('Response format ' . $response_format . ' not supported. Format must be \'json\' or \'xml\'.');
+        }
         $this->response_format = $response_format;
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getResponse() {
         return $this->response;
     }
 
     /**
-     * @param mixed $response
+     * @param string $response
      */
     public function setResponse($response) {
         $this->response = $response;
@@ -344,7 +352,7 @@ class Api {
 
 
     /**
-     * @return mixed
+     * @return integer
      */
     public function getResponseCode() {
         return $this->response_code;
