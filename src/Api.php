@@ -6,8 +6,6 @@
 namespace berkas1\thingspeak_php;
 
 
-use PHPUnit\Runner\Exception;
-
 class Api {
 
 
@@ -41,7 +39,7 @@ class Api {
      */
     public function createChannel($params = array()) {
         if (!array_key_exists("api_key", $params)) {
-            throw new \Exception("No user api_key provided. Please see https://www.mathworks.com/help/thingspeak/create-a-channel.html");
+            throw new \MissingUserApiKey("For this you need to provide user API key. Please see https://www.mathworks.com/help/thingspeak/create-a-channel.html");
         }
 
         $uri = 'channels';
@@ -61,7 +59,7 @@ class Api {
      */
     public function updateChannel($params = array()) {
         if (!array_key_exists("api_key", $params)) {
-            throw new \Exception("No user api_key provided. Please see https://www.mathworks.com/help/thingspeak/create-a-channel.html");
+            throw new \MissingUserApiKey("For this you need to provide user API key. Please see https://www.mathworks.com/help/thingspeak/create-a-channel.html");
         }
 
         $uri = 'channels/' . $this->channel_id;
@@ -331,7 +329,7 @@ class Api {
     public function setResponseFormat($response_format) {
         if ($response_format != "json" && $response_format != 'xml')
         {
-            throw new \Exception('Response format ' . $response_format . ' not supported. Format must be \'json\' or \'xml\'.');
+            throw new \WrongResponseFormat('Response format ' . $response_format . ' not supported. Format must be \'json\' or \'xml\'.');
         }
         $this->response_format = $response_format;
     }
