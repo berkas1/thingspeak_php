@@ -24,12 +24,21 @@ class ApiTest extends \PHPUnit\Framework\TestCase
 
     public function testApiKey() {
         $this->assertSame(null, $this->ts->getApiKey());
+        $this->ts->setApiKey("asdf24#");
+        $this->assertSame("asdf24#", $this->ts->getApiKey());
+        $this->ts->setApiKey(null);
+
     }
 
-    public function testGetFeed() {
-        $requiredString = '{"channel":{"id":9,"name":"my_house",';
-        $string = $this->ts->getFeed(array('results' => 1,))->getResponse();
-        $this->assertSame($requiredString, substr($string, 0, 37));
+    public function testGetServerUrl()
+    {
+        $this->assertSame("https://api.thingspeak.com/", $this->ts->getServerUrl());
     }
+
+    public function testGetResponseFormat()
+    {
+        $this->assertSame("json", $this->ts->getResponseFormat());
+    }
+
 
 }
