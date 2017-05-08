@@ -2,6 +2,7 @@
 ### Composer template
 composer.phar
 index.php
+phpDocumentor.phar
 
 
 .idea/
