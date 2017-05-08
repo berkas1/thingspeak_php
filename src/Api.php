@@ -35,7 +35,7 @@ class Api {
      * For parameters please see https://www.mathworks.com/help/thingspeak/create-a-channel.html
      * @param array $params
      * @return $this
-     * @throws \Exception
+     * @throws \MissingUserApiKey
      */
     public function createChannel($params = array()) {
         if (!array_key_exists("api_key", $params)) {
@@ -55,7 +55,7 @@ class Api {
      * For parameters please see https://www.mathworks.com/help/thingspeak/update-a-channel.html
      * @param array $params
      * @return $this
-     * @throws \Exception
+     * @throws \MissingUserApiKey
      */
     public function updateChannel($params = array()) {
         if (!array_key_exists("api_key", $params)) {
@@ -287,6 +287,7 @@ class Api {
     }
 
     /**
+     * Return API key.
      * @return string
      */
     public function getApikey() {
@@ -294,6 +295,7 @@ class Api {
     }
 
     /**
+     * Set API key.
      * @param string $apikey
      */
     public function setApikey($apikey) {
@@ -301,6 +303,7 @@ class Api {
     }
 
     /**
+     * Return channel ID.
      * @return integer
      */
     public function getChannelId() {
@@ -308,6 +311,7 @@ class Api {
     }
 
     /**
+     * Set channel ID.
      * @param integer $channel_id
      */
     public function setChannelId($channel_id) {
@@ -315,6 +319,7 @@ class Api {
     }
 
     /**
+     * Returns response format.
      * @return string
      */
     public function getResponseFormat() {
@@ -322,9 +327,9 @@ class Api {
     }
 
     /**
-     * Set response format. 'xml' and 'json' supported.
+     * Sets response format. 'xml' and 'json' supported.
      * @param string $response_format
-     * @throws \Exception
+     * @throws \WrongResponseFormat
      */
     public function setResponseFormat($response_format) {
         if ($response_format != "json" && $response_format != 'xml')
@@ -335,6 +340,7 @@ class Api {
     }
 
     /**
+     * Returns response returned from ThingSpeak server.
      * @return string
      */
     public function getResponse() {
@@ -342,6 +348,7 @@ class Api {
     }
 
     /**
+     *
      * @param string $response
      */
     public function setResponse($response) {
@@ -350,6 +357,7 @@ class Api {
 
 
     /**
+     * Returns response HTTP code.
      * @return integer
      */
     public function getResponseCode() {
@@ -357,6 +365,7 @@ class Api {
     }
 
     /**
+     * Returns server URL.
      * @return string
      */
     public function getServerUrl(): string {
@@ -364,6 +373,7 @@ class Api {
     }
 
     /**
+     * Sets new ThingSpeak server URL.
      * @param string $server_url
      */
     public function setServerUrl(string $server_url) {
